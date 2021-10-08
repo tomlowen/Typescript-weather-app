@@ -1,5 +1,5 @@
 import React from 'react';
-type AppProps = { changeCity: () => void };
+type AppProps = { changeCity: (event: React.ChangeEvent<HTMLInputElement>) => void };
 export default function InputBox({ changeCity }: AppProps) {
 	return (
 		<div>

@@ -1,9 +1,9 @@
 import React from 'react';
 
 type AppProps = {
-	label: string;
+	buttonText: string;
 	handleClick: () => void;
 };
-export default function Button({ label, handleClick }: AppProps) {
-	return <button onClick={handleClick}>{label}</button>;
+export default function Button({ buttonText, handleClick }: AppProps) {
+	return <button onClick={handleClick}>{buttonText}</button>;
 }
