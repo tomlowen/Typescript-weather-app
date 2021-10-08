@@ -9,7 +9,7 @@ interface SearchData {
 
 const apiKey: string = "796bea07ad90643ea4c2f47f784c35e0"
 const initialSearchDataState: SearchData = {city: "Birmingham", unit: "metric"}
-const initialWeatherDataArray: object[] = []
+const initialWeatherDataArray: any = []
 
 function App() {
 
@@ -34,6 +34,7 @@ function App() {
 	return (
 		<div className="App">
 			<CityForm changeCity={changeCity} unitChange={unitChange} handleClick={handleClick} />
+      {weatherDataArray.length > 0 && <p>{weatherDataArray[0].name}</p>}
 		</div>
 	);
 }
