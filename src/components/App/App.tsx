@@ -8,6 +8,7 @@ const initialState = {city: "Birmingham", unit: "metric"}
 function App() {
 
   const [searchData, setSearchData] = useState(initialState);
+  const [weatherDataArray, setWeatherDataArray] = useState([])
 
 	function changeCity(event: React.ChangeEvent<HTMLInputElement>): void {
     setSearchData({...searchData, city: event.target.value})
@@ -18,9 +19,11 @@ function App() {
 
 	function handleClick() {
     const {city, unit} = searchData;
-    fetch(`api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`)
     .then((data)=> data.json())
-    .then((res)=> console.log(res))
+    .then((res)=> setWeatherDataArray([...weatherDataArray, res]))
+    .catch((error)=> console.log(error))
+
   }
 
 	return (
