@@ -33,12 +33,17 @@ function App() {
 			.catch((error) => console.log(error));
 	}
 
+	function removeCard(card: string) {
+		console.log(card)
+		setWeatherDataArray(weatherDataArray.filter((city: any)=> city.name !== card))
+	}
+
 	return (
 		<div className="App">
 			<CityForm changeCity={changeCity} unitChange={unitChange} handleClick={handleClick} />
 			{weatherDataArray.length > 0 &&
 				weatherDataArray.map((city: any) => {
-					return <WeatherCard city={city} />;
+					return <WeatherCard city={city} handleClick={removeCard}/>;
 				})}
 		</div>
 	);
