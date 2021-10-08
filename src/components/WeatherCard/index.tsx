@@ -17,18 +17,19 @@ export default function WeatherCard({ city }: any) {
 			<div className="w-full  lg:w-11/12 xl:w-full px-1 bg-white py-5 lg:px-2 lg:py-2 tracking-wide">
 				<div className="flex flex-row lg:justify-between justify-center">
 					<div className="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
-						{city.main.temp.toFixed(0)}
+						Feels like -- {Math.floor(city.main.feels_like)}
 						<sup> o</sup>C
 					</div>
 					<div className="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
 						<p className="capitalize">{city.weather[0].description}</p>
 					</div>
 					<div className="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
-						<p className="capitalize">Pressure:{city.main.pressure}</p>
+						<p className="capitalize">Pressure:{city.main.pressure}hPa</p>
 					</div>
 				</div>
-				<div className="font-semibold text-gray-800 text-xl text-center lg:text-left px-2">
-					{city.name}
+				<div className="font-semibold text-gray-800 text-5xl text-center lg:text-left px-2 mt-4 mb-2">
+					{city.name} {city.main.temp.toFixed(0)}
+					<sup> o</sup>C
 				</div>
 
 				<div className="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2">
@@ -41,10 +42,11 @@ export default function WeatherCard({ city }: any) {
 					<sup> o</sup>C
 				</div>
 			</div>
-			<div className="flex flex-row items-center w-full lg:w-1/3 bg-white lg:justify-end justify-center px-2 py-4 lg:px-0">
-				<span className="tracking-wider text-gray-600 bg-gray-200 px-2 text-sm rounded leading-loose mx-2 font-semibold">
+			<div className="flex flex-col justify-between w-full lg:w-1/4 bg-white px-2 lg:px-0">
+				<button className="tracking-wider text-gray-600 bg-gray-200 px-2 text-sm rounded leading-loose mx-2 font-semibold">
 					Clear
-				</span>
+				</button>
+				<p>Hello</p>
 			</div>
 		</div>
 	);
