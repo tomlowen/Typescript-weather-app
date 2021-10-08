@@ -11,9 +11,11 @@ type AppProps = {
 export default function CityForm({ changeCity, unitChange, handleClick }: AppProps) {
 	return (
 		<div className="form mb-44 mt-10">
-			<InputBox changeCity={changeCity} />
-			<UnitDropdown unitChange={unitChange} />
-			<CustomButton buttonText="Get Weather" handleClick={handleClick} />
+			<div className="flex rounded space-x-3">
+				<InputBox changeCity={changeCity} />
+				<UnitDropdown unitChange={unitChange} />
+				<CustomButton buttonText="Get Weather" handleClick={handleClick} />
+			</div>
 		</div>
 	);
 }
