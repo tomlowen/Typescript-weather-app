@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import CityForm from '../CityForm';
 import WeatherCard from '../WeatherCard';
+import Toggle from "../Toggle"
 
 interface SearchData {
 	city: string;
@@ -11,10 +12,12 @@ interface SearchData {
 const apiKey: string = '796bea07ad90643ea4c2f47f784c35e0';
 const initialSearchDataState: SearchData = { city: 'Birmingham', unit: 'metric' };
 const initialWeatherDataArray: any = [];
+const intitalUnits: string = "metric"
 
 function App() {
 	const [searchData, setSearchData] = useState(initialSearchDataState);
 	const [weatherDataArray, setWeatherDataArray] = useState(initialWeatherDataArray);
+	const [units, setUnits] = useState(intitalUnits)
 
 	function changeCity(event: React.ChangeEvent<HTMLInputElement>): void {
 		setSearchData({ ...searchData, city: event.target.value });
@@ -31,18 +34,28 @@ function App() {
 			.then((data) => data.json())
 			.then((res) => setWeatherDataArray([...weatherDataArray, res]))
 			.catch((error) => console.log(error));
+			console.log(units)
 	}
 
 	function removeCard(card: string) {
 		setWeatherDataArray(weatherDataArray.filter((city: any)=> city.name !== card))
 	}
 
+	function toggleUnits() {
+		if(units==="metric") {
+			setUnits("imperial")
+		} else {
+			setUnits("metric")
+		}
+	}
+
 	return (
 		<div className="App">
+			<Toggle handleClick={toggleUnits}/>
 			<CityForm changeCity={changeCity} unitChange={unitChange} handleClick={handleClick} />
 			{weatherDataArray.length > 0 &&
-				weatherDataArray.map((city: any) => {
-					return <WeatherCard city={city} handleClick={removeCard}/>;
+				weatherDataArray.map((city: any, index: number) => {
+					return <WeatherCard city={city} handleClick={removeCard} units={units} key={index}/>;
 				})}
 		</div>
 	);

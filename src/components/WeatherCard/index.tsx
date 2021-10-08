@@ -3,8 +3,19 @@ import './index.css';
 import CustomButton from '../CustomButton';
 import { motion } from "framer-motion"
 
+type AppProps = {
+	city: any;
+	handleClick: (cityname: string) => void;
+	units: string
+};
 
-export default function WeatherCard({ city, handleClick }: any) {
+export default function WeatherCard({ city, handleClick, units  }: AppProps) {
+	const tempUnit = units==="metric" ? "C" : "F"
+
+	function convertToFarenheit(temp: number) {
+		return temp * 9/5 + 32;
+	}
+
 	return (
 		<motion.div   animate={{ y: -50 }}
 		transition={{ type: "spring", stiffness: 65 }}
@@ -24,7 +35,7 @@ export default function WeatherCard({ city, handleClick }: any) {
 				<div className="flex flex-row lg:justify-between justify-center">
 					<div className="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
 						Feels like -- {Math.floor(city.main.feels_like)}
-						<sup> o</sup>C
+						<sup> o</sup>{tempUnit}
 					</div>
 					<div className="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
 						<p className="capitalize">{city.weather[0].description}</p>
@@ -36,8 +47,8 @@ export default function WeatherCard({ city, handleClick }: any) {
 				<div className="flex justify-between px-2 mt-4 mb-2">
 					<div className="font-semibold text-gray-800 text-5xl text-center lg:text-left">
 						{' '}
-						{city.name} {city.main.temp.toFixed(0)}
-						<sup> o</sup>C
+						{city.name} {units==="metric" ? city.main.temp.toFixed(0) : convertToFarenheit(city.main.temp.toFixed(0)) }
+						<sup> o</sup>{tempUnit}
 					</div>
 					<div className="flex flex-col items-center justify-center">
 						<p>Cloud coverage </p>
@@ -58,8 +69,8 @@ export default function WeatherCard({ city, handleClick }: any) {
 				<div className="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2"></div>
 				<div className="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2">
 					Min -- {Math.floor(city.main.temp_min)}
-					<sup> o</sup>C Max -- {Math.floor(city.main.temp_max)}
-					<sup> o</sup>C
+					<sup> o</sup>{tempUnit} Max -- {Math.floor(city.main.temp_max)}
+					<sup> o</sup>{tempUnit}
 				</div>
 			</div>
 			<div className="flex flex-col justify-between w-full lg:w-1/4 bg-white px-2 lg:px-0">
