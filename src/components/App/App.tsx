@@ -34,7 +34,6 @@ function App() {
 	}
 
 	function removeCard(card: string) {
-		console.log(card)
 		setWeatherDataArray(weatherDataArray.filter((city: any)=> city.name !== card))
 	}
 

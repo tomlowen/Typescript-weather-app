@@ -1,6 +1,8 @@
 import React from 'react';
 import './index.css';
-export default function WeatherCard({ city }: any) {
+import CustomButton from "../CustomButton"
+
+export default function WeatherCard({ city, handleClick }: any) {
 	return (
 		<div className="lg:flex shadow rounded-lg border w-1/2 mb-2 border-gray-400 max-w-screen-lg">
 			<div className="flex justify-center bg-blue-600 rounded-lg lg:w-3/12 py-4 block h-full shadow-inner">
@@ -43,9 +45,7 @@ export default function WeatherCard({ city }: any) {
 				</div>
 			</div>
 			<div className="flex flex-col justify-between w-full lg:w-1/4 bg-white px-2 lg:px-0">
-				<button className="tracking-wider text-gray-600 bg-gray-200 px-2 text-sm rounded leading-loose mx-2 font-semibold">
-					Clear
-				</button>
+				<CustomButton buttonText="Clear" handleClick={()=>handleClick(city.name)}/>
 				<p>Hello</p>
 			</div>
 		</div>
