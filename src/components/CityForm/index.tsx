@@ -10,7 +10,7 @@ type AppProps = {
 };
 export default function CityForm({ changeCity, unitChange, handleClick }: AppProps) {
 	return (
-		<div className="form mb-44 mt-10">
+		<div className="form mb-20 mt-10">
 			<div className="flex rounded space-x-3">
 				<InputBox changeCity={changeCity} />
 				<UnitDropdown unitChange={unitChange} />
