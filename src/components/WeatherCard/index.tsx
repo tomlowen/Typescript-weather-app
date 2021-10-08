@@ -1,10 +1,14 @@
 import React from 'react';
 import './index.css';
 import CustomButton from '../CustomButton';
+import { motion } from "framer-motion"
+
 
 export default function WeatherCard({ city, handleClick }: any) {
 	return (
-		<div className="lg:flex shadow rounded-lg border w-1/2 mb-2 border-gray-400 max-w-screen-lg">
+		<motion.div   animate={{ y: -50 }}
+		transition={{ type: "spring", stiffness: 65 }}
+ 		className="lg:flex shadow rounded-lg border w-1/2 mb-2 border-gray-400 max-w-screen-lg">
 			<div className="flex justify-center bg-blue-600 rounded-lg lg:w-3/12 py-4 block h-full shadow-inner">
 				<div className="text-center tracking-wide">
 					<div className="text-white font-bold text-4xl ">
@@ -72,6 +76,6 @@ export default function WeatherCard({ city, handleClick }: any) {
 					/>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }
