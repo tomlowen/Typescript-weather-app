@@ -10,7 +10,7 @@ type AppProps = {
 };
 export default function CityForm({ changeCity, unitChange, handleClick }: AppProps) {
 	return (
-		<div>
+		<div className="form mb-44 mt-10">
 			<InputBox changeCity={changeCity} />
 			<UnitDropdown unitChange={unitChange} />
 			<CustomButton buttonText="Get Weather" handleClick={handleClick} />
