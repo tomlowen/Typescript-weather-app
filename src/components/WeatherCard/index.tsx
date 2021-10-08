@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './index.css';
 export default function WeatherCard({ city }: any) {
 	return (
 		<div className="lg:flex shadow rounded-lg border  border-gray-400 max-w-lg">
