@@ -2,13 +2,19 @@ import React, {useState} from 'react';
 import './App.css';
 import CityForm from '../CityForm';
 
-const apiKey = "796bea07ad90643ea4c2f47f784c35e0"
-const initialState = {city: "Birmingham", unit: "metric"}
+interface SearchData {
+  city: string,
+  unit: string,
+}
+
+const apiKey: string = "796bea07ad90643ea4c2f47f784c35e0"
+const initialSearchDataState: SearchData = {city: "Birmingham", unit: "metric"}
+const initialWeatherDataArray: object[] = []
 
 function App() {
 
-  const [searchData, setSearchData] = useState(initialState);
-  const [weatherDataArray, setWeatherDataArray] = useState([])
+  const [searchData, setSearchData] = useState(initialSearchDataState);
+  const [weatherDataArray, setWeatherDataArray] = useState(initialWeatherDataArray)
 
 	function changeCity(event: React.ChangeEvent<HTMLInputElement>): void {
     setSearchData({...searchData, city: event.target.value})
@@ -23,7 +29,6 @@ function App() {
     .then((data)=> data.json())
     .then((res)=> setWeatherDataArray([...weatherDataArray, res]))
     .catch((error)=> console.log(error))
-
   }
 
 	return (
