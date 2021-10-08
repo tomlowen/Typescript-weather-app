@@ -34,7 +34,8 @@ export default function WeatherCard({ city, handleClick, units  }: AppProps) {
 			<div className="w-full  lg:w-11/12 xl:w-full px-1 bg-white py-5 lg:px-2 lg:py-2 tracking-wide">
 				<div className="flex flex-row lg:justify-between justify-center">
 					<div className="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
-						Feels like -- {Math.floor(city.main.feels_like)}
+					
+						Feels like -- {units==="metric" ? Math.floor(city.main.feels_like) : convertToFarenheit(Math.floor(city.main.feels_like)) }
 						<sup> o</sup>{tempUnit}
 					</div>
 					<div className="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
@@ -68,14 +69,14 @@ export default function WeatherCard({ city, handleClick, units  }: AppProps) {
 
 				<div className="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2"></div>
 				<div className="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2">
-					Min -- {Math.floor(city.main.temp_min)}
-					<sup> o</sup>{tempUnit} Max -- {Math.floor(city.main.temp_max)}
+					Min -- {units==="metric" ? Math.floor(city.main.temp_min) : convertToFarenheit(Math.floor(city.main.temp_min)) }
+					<sup> o</sup>{tempUnit} Max -- {units==="metric" ? Math.floor(city.main.temp_max) : convertToFarenheit(Math.floor(city.main.temp_max)) }
 					<sup> o</sup>{tempUnit}
 				</div>
 			</div>
 			<div className="flex flex-col justify-between w-full lg:w-1/4 bg-white px-2 lg:px-0">
 				<CustomButton buttonText="Clear" handleClick={() => handleClick(city.name)} />
-				<p>Wind speed: {city.wind.speed} m/s</p>
+				<p>Wind speed: {units==="metric" ? city.wind.speed : Math.floor(city.wind.speed * 2.237) } {units==="metric" ? "m/s" : "mph" }</p>
 				<p>Wind direction </p>
 				<div className="flex justify-around align-center">
 					<img className="w-14" src="/wind-sign.png" alt="flag" />
