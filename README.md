@@ -2,7 +2,13 @@
 
 ## Overview
 
-This was my first attempt at building an App with Typescript, and also first time using Tailwind for styling.
+This was my first attempt at building an App with Typescript, and also first time using an animation library and Tailwind for styling. Built in a day a the School of Code hackathon, my partner for the week Daniel Corseanschi and I learnt to use several new technologies with this basic web app. 
+
+## Built with:
+Typescript
+Tailwind
+HTML
+Framer animation library
 
 ## Core Requirements
 
