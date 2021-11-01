@@ -9,7 +9,6 @@ interface SearchData {
 	unit: string;
 }
 
-const apiKey: string = '796bea07ad90643ea4c2f47f784c35e0';
 const initialSearchDataState: SearchData = { city: 'Birmingham', unit: 'metric' };
 const initialWeatherDataArray: any = [];
 const intitalUnits: string = "metric"
@@ -29,7 +28,7 @@ function App() {
 	function handleClick() {
 		const { city, unit } = searchData;
 		fetch(
-			`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`
+			`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${process.env.APIKEY}`
 		)
 			.then((data) => data.json())
 			.then((res) => setWeatherDataArray([...weatherDataArray, res]))
